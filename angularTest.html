@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="customerApp"><!-- information of what TYPE of document to acept-->
+
+	<head>	<!--information about the document-->
+			<meta charset="UTF-8"><!-- Specify the character encoding for the HTML document-->
+		
+		<!--title for document -->
+		<title>test Angular</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--makes browsers render all elements more consistently and in line with modern standards-->
+		<link herf="http://necolas.github.com/normalize.css/">
+
+		<!-- CSS -->
+	    <link href='http://fonts.googleapis.com/css?family=Lato:100,300' rel='stylesheet' type='text/css'>
+
+		<link href="C:\Users\Nayana\WebDevlopment\bootstrap-3.3.4-dist\css\bootstrap.css" rel="stylesheet">
+	 	<link href="C:\Users\Nayana\WebDevlopment\bootstrap-3.3.4-dist\css\bootstrap.min.css" rel="stylesheet">
+
+		
+		
+	</head>
+	<body ng-controller="CustomersController">
+	
+		<div class="container" >	
+			<div class="panel panel-default">
+				<div class="panel-heading"> Table Example</div>				
+					
+				<div class="panel-body">					
+
+					<span> <h3>Total number of customers:{{customers.length}} </h3> </span>
+					
+					<label for="cusomerDeatil"><span> Customer detail </span></label>
+				
+					<input id="customer detail" type="text" palceholder="enter customer details" ng-model="customerFilter.name" />
+				
+
+					<table class="table">
+						<tr>
+							<th ng-click="doSort('name')">Name</th>
+							<th ng-click="doSort('city')">City </th>
+							<th ng-click="doSort('orderTotal')">OrderTotal</th>
+							<th ng-click="doSort('joined')"> Joined</th>
+						</tr>
+						<tr data-ng-repeat="cust in customers| filter:customerFilter |orderBy:sortBy:reverse">
+							<td> {{ cust.name| uppercase  }} </td>
+							<td> {{ cust.city }} </td>
+							<td> {{ cust.orderTotal |currency }} </td>
+							<td> {{ cust.joined | date:"MM-dd-yyyy"}} </td>
+							
+						</tr>
+					</table>
+				</div>
+			</div>
+		
+		
+		
+		<!--angularjs-->
+		<script src="..\bower_components\angular\angular.min.js"></script>
+			<!--controllers-->
+		<script src="..\app\js\app.js"></script>
+		<script src="..\app\controllers\customerController.js"></script>
+
+		
+
+		
+	</body>
+</html>
